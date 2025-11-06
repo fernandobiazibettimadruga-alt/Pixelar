@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Comparadores Antes/Depois - Carrossel (Setas)</title>
+<title>Comparador Antes e Depois</title>
 <style>
 :root{
   --bg:#f7f7f8;
@@ -22,7 +22,7 @@ body{background:var(--bg);display:flex;align-items:center;justify-content:center
 .track{display:flex;transition:transform 450ms cubic-bezier(.22,.9,.2,1);will-change:transform;}
 .slide{min-width:100%;padding:28px;display:flex;align-items:center;justify-content:center;}
 .card{width:100%;max-width:920px;background:var(--card);border-radius:14px;padding:18px;box-shadow:0 6px 18px rgba(10,10,20,0.04);} 
-.comparator{position:relative;overflow:hidden;border-radius:10px;background:#000;aspect-ratio: 4/3;width:100%;touch-action:none;user-select:none;}
+.comparator{position:relative;overflow:hidden;border-radius:10px;background:#000;aspect-ratio:4/3;width:100%;touch-action:none;user-select:none;}
 .comparator img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;}
 .comparator .after{clip-path:inset(0 0 0 50%);}
 .handle{position:absolute;left:50%;top:0;bottom:0;width:3px;background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.6));transform:translateX(-50%);z-index:6;display:flex;align-items:center;justify-content:center;pointer-events:none;}
@@ -30,18 +30,13 @@ body{background:var(--bg);display:flex;align-items:center;justify-content:center
 .label-left, .label-right{position:absolute;z-index:7;top:12px;padding:6px 10px;border-radius:999px;font-size:13px;background:rgba(0,0,0,0.45);color:#fff;}
 .label-left{left:12px;}
 .label-right{right:12px;}
-.controls{position:absolute;left:12px;bottom:12px;z-index:8;display:flex;gap:8px;align-items:center;}
-.btn{background:rgba(255,255,255,0.9);border-radius:10px;padding:8px 10px;font-weight:600;cursor:pointer;box-shadow:0 6px 12px rgba(12,14,20,0.06);} 
 .nav{position:absolute;right:12px;bottom:12px;z-index:8;display:flex;gap:10px;}
 .dot{width:10px;height:10px;border-radius:50%;background:rgba(0,0,0,0.12);}
 .dot.active{background:var(--accent);box-shadow:0 4px 10px rgba(0,0,0,0.08);} 
-/* Arrows */
 .arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:10;width:48px;height:48px;border-radius:999px;border:none;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.9);box-shadow:0 8px 20px rgba(12,14,20,0.06);cursor:pointer;}
 .arrow svg{width:20px;height:20px;opacity:0.9}
 .arrow.left{left:12px}
 .arrow.right{right:12px}
-
-/* Responsive */
 @media (max-width:700px){
   .wrapper{padding:0 12px;}
   .title{font-size:18px;}
@@ -58,11 +53,10 @@ body{background:var(--bg);display:flex;align-items:center;justify-content:center
       <div class="title">Comparador Antes e Depois</div>
       <div class="subtitle">Navegue com as setas • Arraste a bolinha para comparar</div>
     </div>
-    <div class="subtitle">5 exemplos • Proporção 16:9</div>
+    <div class="subtitle">5 exemplos • Proporção 4:3</div>
   </div>
 
   <div class="carousel" id="carousel">
-    <!-- Arrows -->
     <button class="arrow left" id="arrowLeft" aria-label="Anterior">
       <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 18L9 12l6-6" stroke="#111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
@@ -71,12 +65,13 @@ body{background:var(--bg);display:flex;align-items:center;justify-content:center
     </button>
 
     <div class="track" id="track">
-      <!-- slides (clones will be added by script) -->
+
+      <!-- Slide 1 -->
       <div class="slide" data-index="1">
         <div class="card">
           <div class="comparator" data-index="1">
-            <img class="after" src="after1.jpg" alt="Depois 1">
-            <img class="before" src="before1.jpg" alt="Antes 1">
+            <img class="before" src="after1.jpg" alt="Antes 1">
+            <img class="after" src="before1.jpg" alt="Depois 1">
             <div class="handle"><div class="knob" aria-hidden="true">⟷</div></div>
             <div class="label-left">Antes</div>
             <div class="label-right">Depois</div>
@@ -84,11 +79,12 @@ body{background:var(--bg);display:flex;align-items:center;justify-content:center
         </div>
       </div>
 
+      <!-- Slide 2 -->
       <div class="slide" data-index="2">
         <div class="card">
           <div class="comparator" data-index="2">
-            <img class="after" src="after2.jpg" alt="Depois 2">
-            <img class="before" src="before2.jpg" alt="Antes 2">
+            <img class="before" src="after2.jpg" alt="Antes 2">
+            <img class="after" src="before2.jpg" alt="Depois 2">
             <div class="handle"><div class="knob" aria-hidden="true">⟷</div></div>
             <div class="label-left">Antes</div>
             <div class="label-right">Depois</div>
@@ -96,11 +92,12 @@ body{background:var(--bg);display:flex;align-items:center;justify-content:center
         </div>
       </div>
 
+      <!-- Slide 3 -->
       <div class="slide" data-index="3">
         <div class="card">
           <div class="comparator" data-index="3">
-            <img class="after" src="after3.jpg" alt="Depois 3">
-            <img class="before" src="before3.jpg" alt="Antes 3">
+            <img class="before" src="after3.jpg" alt="Antes 3">
+            <img class="after" src="before3.jpg" alt="Depois 3">
             <div class="handle"><div class="knob" aria-hidden="true">⟷</div></div>
             <div class="label-left">Antes</div>
             <div class="label-right">Depois</div>
@@ -108,11 +105,12 @@ body{background:var(--bg);display:flex;align-items:center;justify-content:center
         </div>
       </div>
 
+      <!-- Slide 4 -->
       <div class="slide" data-index="4">
         <div class="card">
           <div class="comparator" data-index="4">
-            <img class="after" src="after4.jpg" alt="Depois 4">
-            <img class="before" src="before4.jpg" alt="Antes 4">
+            <img class="before" src="after4.jpg" alt="Antes 4">
+            <img class="after" src="before4.jpg" alt="Depois 4">
             <div class="handle"><div class="knob" aria-hidden="true">⟷</div></div>
             <div class="label-left">Antes</div>
             <div class="label-right">Depois</div>
@@ -120,11 +118,12 @@ body{background:var(--bg);display:flex;align-items:center;justify-content:center
         </div>
       </div>
 
+      <!-- Slide 5 -->
       <div class="slide" data-index="5">
         <div class="card">
           <div class="comparator" data-index="5">
-            <img class="after" src="after5.jpg" alt="Depois 5">
-            <img class="before" src="before5.jpg" alt="Antes 5">
+            <img class="before" src="after5.jpg" alt="Antes 5">
+            <img class="after" src="before5.jpg" alt="Depois 5">
             <div class="handle"><div class="knob" aria-hidden="true">⟷</div></div>
             <div class="label-left">Antes</div>
             <div class="label-right">Depois</div>
@@ -132,19 +131,16 @@ body{background:var(--bg);display:flex;align-items:center;justify-content:center
         </div>
       </div>
 
-    </div> <!-- track -->
-
-    <!-- indicators -->
+    </div>
     <div class="nav" id="nav"></div>
-  </div> <!-- carousel -->
+  </div>
 </div>
 
 <script>
-// Carousel with arrows + clone loop + smooth transition
 const track = document.getElementById('track');
 let slides = Array.from(track.children);
 const total = slides.length;
-let cur = 1; // start at first real slide after clone
+let cur = 1;
 let slideWidth = document.querySelector('.carousel').clientWidth;
 const nav = document.getElementById('nav');
 
@@ -164,52 +160,38 @@ function updateSizes(){
 window.addEventListener('resize', updateSizes);
 
 function setPosition(animate=true){
-  if(animate) track.style.transition = 'transform 500ms cubic-bezier(.22,.9,.2,1)';
-  else track.style.transition = 'none';
+  track.style.transition = animate ? 'transform 500ms cubic-bezier(.22,.9,.2,1)' : 'none';
   track.style.transform = `translateX(${ -cur * slideWidth }px)`;
 }
-
-// initial position (after cloning we are at index 1)
 setPosition(false);
 
 track.addEventListener('transitionend', ()=>{
-  const realTotal = total;
-  if(cur === 0){ cur = realTotal; setPosition(false); }
-  if(cur === realTotal + 1){ cur = 1; setPosition(false); }
+  if(cur === 0){ cur = total; setPosition(false); }
+  if(cur === total + 1){ cur = 1; setPosition(false); }
   updateDots();
 });
 
-// Arrows
-const btnL = document.getElementById('arrowLeft');
-const btnR = document.getElementById('arrowRight');
-btnL.addEventListener('click', ()=>{ moveTo(cur - 1); });
-btnR.addEventListener('click', ()=>{ moveTo(cur + 1); });
+document.getElementById('arrowLeft').onclick = ()=> moveTo(cur - 1);
+document.getElementById('arrowRight').onclick = ()=> moveTo(cur + 1);
 
-function moveTo(target){
-  cur = target;
-  setPosition(true);
-}
+function moveTo(target){ cur = target; setPosition(true); }
 
-// dots
 for(let i=0;i<total;i++){
-  const d = document.createElement('div'); d.className='dot'; d.dataset.i = i+1;
-  d.addEventListener('click', ()=>{ moveTo(i+1); });
+  const d = document.createElement('div');
+  d.className='dot';
+  d.dataset.i = i+1;
+  d.onclick=()=> moveTo(i+1);
   nav.appendChild(d);
 }
 function updateDots(){
-  const nodes = Array.from(nav.children);
-  nodes.forEach(n=>n.classList.remove('active'));
-  let active = cur - 1;
-  if(active < 0) active = total - 1;
-  if(active >= total) active = 0;
-  nodes[active].classList.add('active');
+  nav.querySelectorAll('.dot').forEach((n,i)=>{
+    n.classList.toggle('active', i===cur-1 || (cur===0 && i===total-1) || (cur===total+1 && i===0));
+  });
 }
 updateDots();
 
-// Comparator interactions (keep the before/after knob drag)
 function initComparators(){
-  const comps = document.querySelectorAll('.comparator');
-  comps.forEach(comp=>{
+  document.querySelectorAll('.comparator').forEach(comp=>{
     const after = comp.querySelector('.after');
     const handle = comp.querySelector('.handle');
     const knob = handle.querySelector('.knob');
@@ -221,26 +203,14 @@ function initComparators(){
       after.style.clipPath = `inset(0 ${100-pct}% 0 0)`;
       handle.style.left = pct + '%';
     }
-    knob.addEventListener('pointerdown', (e)=>{ isDown=true; rect = comp.getBoundingClientRect(); knob.setPointerCapture(e.pointerId); });
-    window.addEventListener('pointermove', (e)=>{ if(!isDown) return; updateClip(e.clientX); });
-    window.addEventListener('pointerup', ()=>{ if(!isDown) return; isDown=false; });
-    comp.addEventListener('pointerdown', (e)=>{ rect = comp.getBoundingClientRect(); updateClip(e.clientX); });
-    // initialize
-    after.style.clipPath = 'inset(0 50% 0 0)';
-    handle.style.left = '50%';
+    knob.addEventListener('pointerdown', e=>{ isDown=true; rect=comp.getBoundingClientRect(); knob.setPointerCapture(e.pointerId); });
+    window.addEventListener('pointermove', e=>{ if(!isDown) return; updateClip(e.clientX); });
+    window.addEventListener('pointerup', ()=> isDown=false);
+    comp.addEventListener('pointerdown', e=>{ rect=comp.getBoundingClientRect(); updateClip(e.clientX); });
+    after.style.clipPath='inset(0 50% 0 0)'; handle.style.left='50%';
   });
 }
 initComparators();
-
-// prevent text selection when double-clicking
-window.addEventListener('mousedown', (e)=>{ if(e.target.classList && e.target.classList.contains('knob')) e.preventDefault(); });
-
-// keyboard accessibility
-window.addEventListener('keydown', (e)=>{
-  if(e.key === 'ArrowLeft') moveTo(cur-1);
-  if(e.key === 'ArrowRight') moveTo(cur+1);
-});
-
 </script>
 </body>
 </html>
